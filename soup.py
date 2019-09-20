@@ -14,11 +14,54 @@ except:
 soup = BeautifulSoup(html_content, "html.parser")
 
 # print if needed, gets too noisy
-#print(soup.prettify())
+# print(soup.prettify())
+item = "****************************"
+parte = "##########################\n"
+#print(soup.title)
+print("   KATHERINE GARCIA G")
+print(parte)
+print("1. Portal")
+title = soup.title.string
+print(title)
+print(item)
+direccion = soup.find("a", href= "#myModal")
+print (direccion.text)
+print(item)
+contador = 1
+prophref = soup.find_all("a", href = True)
+for i in prophref:
+    ref = i['href']
+    if not ref.startswith(("#", "/")):
+        print(contador, ref)
+        contador += 1
+print("2. Estudios")
+print(parte)
 
-print(soup.title)
-print(soup.title.string)
 
-for div in soup.find_all("div"):
-    print(div)
-    print("--------------------------")
+# for divs in todo:
+#     if (divs.todos is not None): #and (divs.todos["href"] == "#myModal") and (divs.todos["data-toggle"]== "modal"):
+#         print("hola")
+#         if (divs.todos["href"] == "#myModal"):
+#             print ("2")
+#             if (divs.todos["data-toggle"] == "modal"):
+#                 print("3")
+        # print(divs.todos)
+        
+    
+
+    # try :
+    #     direccion2 = div.a["href"]
+    #     if direccion2 == "#myModal":
+    #         print(direccion2)
+    # except:
+    #, class_= 'span4'
+    #     if None:
+    #         pass
+    
+# for i in soup.find_all("a"):
+#if direccion.startswith("Calle"):
+
+
+# for div in soup.find_all("div"):
+#     print(div)
+#     print("--------------------------")
