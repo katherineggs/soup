@@ -87,6 +87,13 @@ soup = BeautifulSoup(html_content, "html.parser")
 
 top = soup.find("div", id="topmenu")
 print(top.text)
+estuds = soup.find("div", class_="row-fluid sinbullets")
+print(estuds.text)
+leftbar = soup.find("div", class_= "leftbar")
+leftmenu = leftbar.find_all("li")
+for i in leftmenu:
+    print(i.text)
+
 # for ul in top:
 #     print(ul)
 
