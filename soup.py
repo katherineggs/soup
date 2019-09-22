@@ -4,15 +4,17 @@ import requests,sys,csv,json
 
 url_1="http://ufm.edu/Portal"
 # Make a GET request to fetch the raw HTML content
-try:
-    html_content = requests.get(url_1).text
-except:
-    print(f"unable to get {url_1}")
-    sys.exit(1)
+def soups(url):
+    try:
+        html_content = requests.get(url).text
+    except:
+        print(f"unable to get {url}")
+        sys.exit(1)
+    # Parse the html content, this is the Magic ;)
+    sopa = BeautifulSoup(html_content, "html.parser")
+    return sopa
 
-# Parse the html content, this is the Magic ;)
-soup = BeautifulSoup(html_content, "html.parser")
-
+soup = soups(url_1)
 
 item = "\n****************************"
 parte = "##########################\n"
@@ -20,8 +22,9 @@ parte = "##########################\n"
 print("   KATHERINE GARCIA G")
 print(parte)
 print("1. Portal")
-title = soup.title.string
-print(title)
+def titles():
+    title = soup.title.string
+    print(title)
 print(item)
 
 hrefs = soup.find_all("a", href = True)
@@ -81,14 +84,7 @@ count_a()
 print("2. Estudios")
 print(parte)
 url_2 = "http://ufm.edu" + estudios
-# Make a GET request to fetch the raw HTML content
-try:
-    html_content = requests.get(url_2).text
-except:
-    print(f"unable to get {url_2}")
-    sys.exit(1)
-# Parse the html content, this is the Magic ;)
-soup = BeautifulSoup(html_content, "html.parser")
+soup = soups(url_2)
 
 top = soup.find("div", id="topmenu")
 print(top.text)
@@ -110,6 +106,13 @@ for i in socs:
 print(item)
 
 count_a()
+
+print(parte)
+
+url_3 = "https://fce.ufm.edu/carrera/cs/"
+soup = soups(url_3)
+titles()
+
 
 # for ul in top:
 #     print(ul)
