@@ -27,6 +27,14 @@ def titles():
     print(title)
 print(item)
 
+# def hre():
+#     prophref = soup.find_all("a", href = True)
+#     for i in prophref:
+#         ref = i['href']
+#         if not ref.startswith(("#", "/")):
+#             print(ref)
+# hre()
+
 hrefs = soup.find_all("a", href = True)
 image_href = []
 for i in hrefs:
@@ -64,22 +72,29 @@ print(item)
 print("Mail:", mail)
 print(item)
 menu = soup.find_all("div", class_="menu-key")
+print("Tags")
 for i in menu:
     tags = i.text
     tags.strip("\n")
     print(tags)
 print(item)
-print(mailbutton,"\n")
+print("UFMail")
+print(mailbutton)
 print(item)
-print(miubutton, "\n")
+print("MiU")
+print(miubutton,)
+print(item)
+print("IMG tags")
 for i in image_href:
-    print(i)
+    if i.startswith("http"):
+        print(i)
 print(item)
 
 def count_a ():
     a = len(soup.find_all("a"))
-    print("\nThere are",a,"<a> tags\n")
+    print("\nThere are",a,"<a> tags")
 count_a()
+print(item)
 
 print("2. Estudios")
 print(parte)
@@ -87,11 +102,14 @@ url_2 = "http://ufm.edu" + estudios
 soup = soups(url_2)
 
 top = soup.find("div", id="topmenu")
+print("Top Menu")
 print(top.text)
 print(item)
+print("Estudios")
 estuds = soup.find("div", class_="row-fluid sinbullets")
 print(estuds.text)
 print(item)
+print("Left bar")
 leftbar = soup.find("div", class_= "leftbar")
 leftmenu = leftbar.find_all("li")
 for i in leftmenu:
@@ -106,12 +124,20 @@ for i in socs:
 print(item)
 
 count_a()
+print(item)
 
+print("3. Computer Science")
 print(parte)
-
 url_3 = "https://fce.ufm.edu/carrera/cs/"
 soup = soups(url_3)
 titles()
+cs_href = soup.title.find_next_sibling('link')
+print("---",cs_href['href'],"---")
+tag_a = soup.find_all("a", href = "https://fce.ufm.edu")
+for i in tag_a:
+    source = i.find("img")['src']
+r = requests.get(source, allow_redirects=True)
+open('logo.ico', 'wb').write(r.content)
 
 
 # for ul in top:
@@ -131,13 +157,7 @@ titles()
 #                 print("3")
         # print(divs.todos)
         
-#contador = 1
-# prophref = soup.find_all("a", href = True)
-# for i in prophref:s
-#     ref = i['href']
-#     if not ref.startswith(("#", "/")):
-#         print(contador, ref)
-#         contador += 1
+
         
     
 
