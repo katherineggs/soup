@@ -55,7 +55,9 @@ for i in hrefs:
     
 
 print("Direccion:", direccion)
+print(item)
 print("Telefono:", telefono)
+print(item)
 print("Mail:", mail)
 print(item)
 menu = soup.find_all("div", class_="menu-key")
@@ -63,15 +65,18 @@ for i in menu:
     tags = i.text
     tags.strip("\n")
     print(tags)
+print(item)
 print(mailbutton,"\n")
+print(item)
 print(miubutton, "\n")
 for i in image_href:
     print(i)
-contador=0
-for i in soup.find_all("a"):
-    contador += 1
-print("\nThere are",contador,"<a> tags\n")
+print(item)
 
+def count_a ():
+    a = len(soup.find_all("a"))
+    print("\nThere are",a,"<a> tags\n")
+count_a()
 
 print("2. Estudios")
 print(parte)
@@ -87,12 +92,24 @@ soup = BeautifulSoup(html_content, "html.parser")
 
 top = soup.find("div", id="topmenu")
 print(top.text)
+print(item)
 estuds = soup.find("div", class_="row-fluid sinbullets")
 print(estuds.text)
+print(item)
 leftbar = soup.find("div", class_= "leftbar")
 leftmenu = leftbar.find_all("li")
 for i in leftmenu:
     print(i.text)
+print(item)
+print("Redes Sociales")
+socials = soup.find("div", class_= "social pull-right")
+socs = socials.find_all("a", href = True)
+for i in socs:
+    redes = i['href']
+    print(redes)
+print(item)
+
+count_a()
 
 # for ul in top:
 #     print(ul)
