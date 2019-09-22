@@ -13,29 +13,70 @@ except:
 # Parse the html content, this is the Magic ;)
 soup = BeautifulSoup(html_content, "html.parser")
 
-# print if needed, gets too noisy
-# print(soup.prettify())
-item = "****************************"
+
+item = "\n****************************"
 parte = "##########################\n"
-#print(soup.title)
+
 print("   KATHERINE GARCIA G")
 print(parte)
 print("1. Portal")
 title = soup.title.string
 print(title)
 print(item)
-direccion = soup.find("a", href= "#myModal")
-print (direccion.text)
-print(item)
-contador = 1
-prophref = soup.find_all("a", href = True)
-for i in prophref:
+
+image_href = []
+hrefs = soup.find_all("a", href = True)
+for i in hrefs:
     ref = i['href']
-    if not ref.startswith(("#", "/")):
-        print(contador, ref)
-        contador += 1
+
+    if ref == "#myModal":
+        direccion = (i.text)
+
+    elif ref.startswith("tel"):
+        ref.strip("tel:")
+        telefono = ref
+
+    elif ref.startswith("mailto:inf"):
+        ref.strip("mailto:")
+        mail = ref
+
+    elif i.text == "UFMail":
+        mailbutton = ref
+
+    elif i.text == "MiU":
+        miubutton = ref
+
+    imag = i.find_all("img")
+    for im in imag:
+        image_href.append(ref)
+
+print("Direccion:", direccion)
+print("Telefono:", telefono)
+print("Mail:", mail)
+print(item)
+menu = soup.find_all("div", class_="menu-key")
+for i in menu:
+    tags = i.text
+    tags.strip("\n")
+    print(tags)
+print(mailbutton,"\n")
+print(miubutton, "\n")
+for i in image_href:
+    print(i)
+        
+# contador = 1
+# prophref = soup.find_all("a", href = True)
+# for i in prophref:s
+#     ref = i['href']
+#     if not ref.startswith(("#", "/")):
+#         print(contador, ref)
+#         contador += 1
+
+#ufmail = soup.find("meta", property="og:image").get('content')
+
 print("2. Estudios")
 print(parte)
+
 
 
 # for divs in todo:
@@ -46,6 +87,14 @@ print(parte)
 #             if (divs.todos["data-toggle"] == "modal"):
 #                 print("3")
         # print(divs.todos)
+        
+#contador = 1
+# prophref = soup.find_all("a", href = True)
+# for i in prophref:s
+#     ref = i['href']
+#     if not ref.startswith(("#", "/")):
+#         print(contador, ref)
+#         contador += 1
         
     
 
