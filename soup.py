@@ -90,10 +90,10 @@ for i in image_href:
         print(i)
 print(item)
 
-def count_a ():
-    a = len(soup.find_all("a"))
-    print("\nThere are",a,"<a> tags")
-count_a()
+def count_ (element):
+    a = len(soup.find_all(element))
+    print("There are",a,"<"+element+">","tags")
+count_("a")
 print(item)
 
 print("2. Estudios")
@@ -123,7 +123,7 @@ for i in socs:
     print(redes)
 print(item)
 
-count_a()
+count_("a")
 print(item)
 
 print("3. Computer Science")
@@ -131,13 +131,40 @@ print(parte)
 url_3 = "https://fce.ufm.edu/carrera/cs/"
 soup = soups(url_3)
 titles()
+print(item)
 cs_href = soup.title.find_next_sibling('link')
 print("---",cs_href['href'],"---")
+print(item)
 tag_a = soup.find_all("a", href = "https://fce.ufm.edu")
 for i in tag_a:
     source = i.find("img")['src']
 r = requests.get(source, allow_redirects=True)
-open('logo.ico', 'wb').write(r.content)
+open('logo.jpg', 'wb').write(r.content)
+print("Logo Facultad")
+print(item)
+title = soup.find("meta", property= "og:title")['content']
+description = soup.find("meta", property="og:description")['content']
+print("Title")
+print(title)
+print("Descripcion")
+print(description)
+print(item)
+count_("a")
+print(item)
+count_("div")
+print(item)
+
+print("\n4. Directorio")
+print(parte)
+url_4 = "https://www.ufm.edu/Directorio"
+soup = soups(url_4)
+
+
+
+
+
+
+
 
 
 # for ul in top:
