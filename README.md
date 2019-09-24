@@ -175,7 +175,7 @@ using ["http://ufm.edu/Portal"](http://ufm.edu/Portal)
 - [x] GET the Complete Address of UFM
 - [x] GET the phone number and info email
 - [x] GET all item that are part of the upper nav menu (id: menu-table)
-- [x] find all properties that have href (link to somewhere)
+- [ ] find all properties that have href (link to somewhere)
 - [x] GET href of "UFMail" button
 - [x] GET href "MiU" button.
 - [x] get hrefs of all &lt;img>
