@@ -94,8 +94,8 @@ def easy_for (element):
 #--------------------------------------------------------------------------------------------------------------------------------------------
 #############################################################################################################################################
 
-item = "\n****************************"
-parte = "##########################\n"
+item = "\n*********************************************"
+parte = "#########################################\n"
 
 print("   KATHERINE GARCIA G")
 print(parte)
@@ -117,12 +117,13 @@ print(item)
 exceeds(hre(),"hrefs")
 print("All <href> in: hrefs.txt")
 
-print("UFMail")
+print(item)
+print("UFMail\n")
 print(mailbutton)
-print("MiU")
+print("MiU\n")
 print(miubutton)
 print(item)
-print("IMG tags")
+print("IMG tags\n")
 easy_for(images)
 print(item)
 
@@ -140,23 +141,23 @@ print("Top Menu")
 print(top.text)
 print(item)
 
-print("Estudios")
+print("ESTUDIOS\n")
 estuds = soup.find_all("div", class_="estudios")
 for est in estuds:
     if est is not None:
         print(est.text)
 each = soup.find("div", class_="row-fluid sinbullets").text
 exceeds(each,"estudios")
-print("All estudios in: estudios.txt")
+print("\nAll estudios in: estudios.txt")
 print(item)
 
-print("Left bar")
+print("LEFT BAR\n")
 leftbar = soup.find("div", class_= "leftbar")
 leftmenu = leftbar.find_all("li")
 for i in leftmenu:
     print("-",i.text)
 print(item)
-print("Redes Sociales")
+print("REDES SOCIALES\n")
 socials = soup.find("div", class_= "social pull-right")
 socs = socials.find_all("a", href = True)
 def get_name(media):
@@ -192,14 +193,15 @@ logo = open('logo.jpg', 'wb')
 r.raw.decode_content = True
 shutil.copyfileobj(r.raw,logo)
 
-print("Logo Facultad")
+print("LOGO FACULTAD CIENCIAS ECONOMICAS")
+print("saved as 'logo.jpg'")
 print(item)
 title = soup.find("meta", property= "og:title")['content']
 description = soup.find("meta", property="og:description")['content']
-print("Title")
+print("TITLE\n")
 print(title)
-print("Descripcion")
-print(description)
+print("DESCRIPTION\n")
+print(description.lower())
 print(item)
 count_("a")
 print(item)
@@ -210,10 +212,23 @@ print("\n4. Directorio")
 print(parte)
 url_4 = "https://www.ufm.edu/Directorio"
 soup = soups(url_4)
+a_tag = soup.find_all("a", text = True)
+mails = []
+for o in a_tag:
+    text = o.text
+    if text.endswith("@ufm.edu"):
+        mails.append(text)
+mails.sort()
+exceeds(mails,"mails")
+print("All mails in mail.txt")
+print(item)
 
-
-
-
+contador = 0
+for mail in mails:
+    if mail[0] in 'aeiou':
+        contador += 1
+print("There are", contador,"mails that start with vowels")
+print(item)
 
 
 
